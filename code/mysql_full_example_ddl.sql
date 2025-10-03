@@ -1,0 +1,28 @@
+-- MySQL Full Example DDL Script
+CREATE TABLE Customers (
+    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    CreatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INT NOT NULL,
+    OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    TotalAmount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+CREATE TABLE OrderItems (
+    OrderItemID INT AUTO_INCREMENT PRIMARY KEY,
+    OrderID INT NOT NULL,
+    Product VARCHAR(100) NOT NULL,
+    Quantity INT NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
+
+CREATE INDEX idx_CustomerEmail ON Customers(Email);
+CREATE INDEX idx_OrderDate ON Orders(OrderDate);
+CREATE INDEX idx_OrderID ON OrderItems(OrderID);

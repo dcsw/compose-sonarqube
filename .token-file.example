@@ -1,0 +1,3 @@
+#!/bin/sh
+export PROJECT_KEY=<your project key>
+export TOKEN=<your global or project token>
