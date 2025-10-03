@@ -40,7 +40,7 @@ password: admin
 11. Click `Generate` button.
 12. <b>Important</b> Copy the generated token -- this is the last time you will be able to see this in SonarQube!
 12. Browse to `http://localhost:9000/projects/create?mode=manual` and create a new project and project key.
-13. Save or keep track of the key for use in step XX
+13. Save or keep track of the key for use in step 15, or paste it into your .token-file 
 14. Then click `Next` in the lower right.
 15. Run your first scan in a separate terminal as follows:
 ```
@@ -52,7 +52,7 @@ docker run --rm \
   -Dsonar.projectKey=<your-project-key> \
   -Dsonar.sources=/usr/src \
   -Dsonar.host.url=http://host.docker.internal:9000 \
-  -Dsonar.login=your-sonarqube-token
+  -Dsonar.token=your-sonarqube-token
 ```
 16. View your projects summary results in the SonarQube dashboard by clicking on your project at `http://localhost:9000/projects`.
 
@@ -70,13 +70,13 @@ You can find your project key by browsing to `http://localhost:9000/projects`, c
 source .token-file
 docker run --rm \
   -e SONAR_HOST_URL="http://host.docker.internal:9000" \
-  -e SONAR_TOKEN="$TOKEN" \
+  -e SONAR_TOKEN="$SONAR_TOKEN" \
   -v ./code:/usr/src \
   sonarsource/sonar-scanner-cli \
   -Dsonar.projectKey=$PROJECT_KEY \
   -Dsonar.sources=/usr/src \
   -Dsonar.host.url=http://host.docker.internal:9000 \
-  -Dsonar.login=$TOKEN
+  -Dsonar.login=$SONAR_TOKEN
 ```
 
 ## Better Yet...
