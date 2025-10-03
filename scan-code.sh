@@ -1,5 +1,5 @@
 #!/bin/sh
-source .token-file
+. ./.token-file
 docker run --rm \
   -e SONAR_HOST_URL="http://host.docker.internal:9000" \
   -e SONAR_TOKEN="$TOKEN" \
