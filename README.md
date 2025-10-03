@@ -92,6 +92,14 @@ You can find your project key by browsing to `http://localhost:9000/projects`, c
 ./scan-code.sh
 ```
 
+## Pointing to other Code directories than ./code
+The default scanning directory is `./code` which contains example source code.
+You can point to any other directory on your local machine, though, by setting  the `CODE_PATH` environment variable.
+Here's one example:
+```
+CODE_PATH=~/new_project/src ./scan-code.sh
+```
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
